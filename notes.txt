@@ -1,7 +1,0 @@
-* building CRM application using django, python, and mysql
-* basic CRM tool
-* CRM = Costumer Relationship Management : will allow us to add costumer records (adress, zipcode, city, phone number...)
-* we can click on costumer and see their records, we can update/delete the record 
-* we can login and logout and register 
-* use version control git and github and how to configure mysql for your application 
-
