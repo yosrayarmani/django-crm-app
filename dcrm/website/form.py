@@ -27,11 +27,11 @@ class SignUpForm(UserCreationForm):
     self.fields['password1'].widget.attrs['placeholder'] = 'Password'
     self.fields['password1'].label = ''
     # if u don't type the right thing for the field a help text pop up 
-    self.fields['password1'].help_text = '<span class="form-text text-muted small"><li>Your Password can\'t be too short.</li></span>'
+    self.fields['password1'].help_text = '<span class="form-text text-muted"><small><li>Your Password can\'t be too short.</li><li>Your Password can\'t be entirely numeric.</li> <li>Your Password must contain at least 8 characters.</li></small></span>'
 
     self.fields['password2'].widget.attrs['class'] = 'form-control'
     self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
     self.fields['password2'].label = ''
     # if u don't type the right thing for the field a help text pop up 
-    self.fields['password2'].help_text = '<span class="form-text text-muted><small>Enter the same password as before, for verification.</small></span>'
+    self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'
   

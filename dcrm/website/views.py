@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-
+from .form import SignUpForm 
 # Create your views here.
 #create the home page 
 def home(request):
@@ -34,4 +34,20 @@ def logout_user(request):
   return redirect('home')
 
 def register_user(request):
-  return render(request, 'register.html', {})
+  # whenever they filled the form send to SignUpForm 
+  if request.method == 'POST': #IF user is filling and posting the form
+    form = SignUpForm(request.POST)
+    if form.is_valid(): 
+      #save the data into variables
+      form.save()
+      # authenticate and login
+      username = form.cleaned_data['username'] 
+      password = form.cleaned_data['password1']
+      user = authenticate(username=username, password=password) 
+      login(request, user)
+      messages.success(request,"Account Created!")
+      return redirect('home')
+  else: #ELSE user is not posting the form and just going to the website >> user want to fill the form but have not done it yet 
+    form = SignUpForm() #don't have to pass in the POST request
+    return render(request, 'register.html', {'form':form}) #pass the form into register.html page  
+  return render(request, 'register.html', {'form':form})
