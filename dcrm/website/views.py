@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .form import SignUpForm 
-# Create your views here.
-#create the home page 
+from .models import Record
+
+#home page 
 def home(request):
+  records = Record.objects.all() #grab everything from the table
   #-------------if a user is POSTING-------------
   #check if logging in
   if request.method == 'POST':
@@ -23,9 +25,9 @@ def home(request):
       return redirect('home')
   #-------------if a user is POSTING-------------
       
-  #-------------else (they're not posting)->> they're GETTING then we can show the home page-------------
+  #-------------else (they're not posting)->> they're 'GETTING' >> then we can show the home page-------------
   else:
-    return render(request, 'home.html', {})
+    return render(request, 'home.html', {'records':records}) #in home.html << {% if records %}
 
 #function should be named logout_user so it won't conflict with the function logout that we imported from django.contrib
 def logout_user(request):
