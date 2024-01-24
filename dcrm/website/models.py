@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+# to define the structure of database tables
 class Record(models.Model):
   created_at = models.DateTimeField(auto_now_add=True)
   first_name = models.CharField(max_length=30)

@@ -6,7 +6,7 @@ from .models import Record
 
 #home page 
 def home(request):
-  records = Record.objects.all() #grab everything from the table
+  records = Record.objects.all() # .all >> grab all the abjects from the table
   #-------------if a user is POSTING-------------
   #check if logging in
   if request.method == 'POST':
@@ -53,3 +53,14 @@ def register_user(request):
     form = SignUpForm() #don't have to pass in the POST request
     return render(request, 'register.html', {'form':form}) #pass the form into register.html page  
   return render(request, 'register.html', {'form':form})
+
+
+def customer_record(request, pk): #pk:primary key of a record
+  if request.user.is_authenticated:
+    #look for the record
+    costumer_record = Record.objects.get(id=pk) # .get >> when we want specific aboject
+    #id is from 'migrations<0001_initial.py'
+    return render(request, 'record.html', {'costumer_record':costumer_record}) # go to 'record.html' and pass 'costumer_record'
+  else:
+    messages.success(request, "You must be logged in first!")
+    return redirect('home')
