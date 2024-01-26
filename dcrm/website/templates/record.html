@@ -3,6 +3,7 @@
 {% block content %}
 
 <div class="card">
+
   <div class="card-header">
     {{ costumer_record.first_name}} 
     {{ costumer_record.last_name }}
@@ -34,7 +35,7 @@
 
 <br> <br>
 <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
-<a href="{% url 'home' %}" class="btn btn-secondary">Add</a>
+<a href="{% url 'update_record' costumer_record.id %}" class="btn btn-secondary">Update</a>
 <a href="{% url 'delete_record' costumer_record.id %}" class="btn btn-danger">Delete</a> 
 <!-- 'delete_record' is the "name" of the path in urls.py  -->
 <!-- we pass 'costumer_record.id' to specify the id of specific record -->
