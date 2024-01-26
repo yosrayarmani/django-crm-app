@@ -9,6 +9,9 @@
         <!-- we only want the logout link to appear ONLY when the user is logged in -->
         {% if user.is_authenticated %}
         <li class="nav-item">
+          <a class="nav-link" href="{% url 'add_record' %}">Add Record</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="{% url 'logout' %}">Logout</a>
         </li>
         {% else %}  <!-- if they are not logged in  -->

@@ -11,4 +11,8 @@ urlpatterns = [
 #   "record/<int:pk>" : this string is part of the url pattern that defines the url path (url: "record/"+ integer (value of integer will be holded by variable called 'pk')
 # when user accesses url: "/record/2", django will capture 2 as the value of "pk" and pass it to the 'custumer_record' view
 # in the view we use 'pk' to retrieve the corresponding record from the DB 
+
+path('delete_record/<int:pk>', views.delete_record, name='delete_record'),
+
+path('add_record/', views.add_record, name='add_record'),
 ]
